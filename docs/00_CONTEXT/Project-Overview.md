@@ -24,6 +24,7 @@ experience, a **separate streaming computer** is preferred to reduce performance
 on gameplay.
 
 The current proof‑of‑concept setup includes:
+
 - OBS with **NDI** for game capture from the gaming computer
 - A dedicated streaming/compositing computer
 - A legacy Windows 10 streaming system using:
@@ -32,6 +33,7 @@ The current proof‑of‑concept setup includes:
   - A built‑in web camera
 
 This setup functions today but relies on:
+
 - Aging hardware
 - Windows 10, which will reach end of support in October 2026
 
@@ -63,6 +65,7 @@ The target operating system for this project is **Zorin OS 18**, based on **Ubun
 24.04**.
 
 Zorin OS was selected due to:
+
 - Long‑term support stability
 - Ubuntu ecosystem compatibility
 - A Windows‑familiar user experience
@@ -76,6 +79,7 @@ tracking.
 ## Scope
 
 ### In Scope
+
 - Linux operating system selection and validation
 - Virtual machine testing of the streaming environment
 - Migration path from VM to bare‑metal installation
@@ -87,6 +91,7 @@ tracking.
 - Final case study synthesis
 
 ### Out of Scope
+
 - Game performance benchmarking
 - Twitch channel growth, branding, or monetization
 - Viewer analytics or engagement optimization
@@ -134,7 +139,7 @@ This repository is structured to be reviewed sequentially:
 
 ## Operating Rule
 
-OneNote is for capture.  
-Obsidian is the system of record.  
-Git is the audit trail.  
+OneNote is for initial capture.
+Markdown files in Git are the system of record.
+Git commit history is the audit trail.
 Published documents are derived artifacts.

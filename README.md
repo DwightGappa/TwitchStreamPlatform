@@ -7,6 +7,7 @@
 The technical implementation is real, but the **primary deliverable is the process itself**—how work is scoped, planned, executed, tracked, and documented. This repository serves as a **systems and project management case study**, not simply a codebase or how-to guide.
 
 The focus is on:
+
 - infrastructure planning and architecture
 - disciplined execution and traceability
 - automation and repeatability
@@ -19,6 +20,7 @@ This project is intended to be reviewed holistically, from initial context throu
 This project is intentionally framed to demonstrate professional growth from an **IT Support background into system ownership and infrastructure-focused work**.
 
 Rather than showcasing isolated technical skills, the repository emphasizes:
+
 - systems thinking over task execution
 - decision-making under constraints
 - operational discipline
@@ -31,9 +33,10 @@ A non-technical outreach purpose exists for the platform, but it is acknowledged
 ## Repository
 
 **Source Repository:**  
-https://github.com/…/TwitchStreamPlatform
+<https://github.com/…/TwitchStreamPlatform>
 
 This repository contains the complete project record, including:
+
 - documentation and context
 - architecture and tooling decisions
 - automation scripts
@@ -51,9 +54,9 @@ GitHub repository documenting a Linux-based streaming platform as a project mana
 
 The repository is organized to clearly separate **human-readable documentation**, **machine-readable data**, and **supporting artifacts**.
 
-```
+```text
 TwitchStreamPlatform/
-├─ docs/                  # Obsidian vault (canonical documentation)
+├─ docs/                   # Canonical project documentation (Markdown, Git tracked)
 │  ├─ 00_CONTEXT/          # Project overview, goals, scope
 │  ├─ 01_DECISIONS/        # Architecture & tooling decisions
 │  ├─ 02_TICKETS/          # Human-readable work summaries
@@ -108,6 +111,7 @@ Structure, naming, and documentation favor clarity and intent over novelty.
 This repository is intended to be reviewed as a **project management and systems case study**, not just a code repository.
 
 Review order:
+
 1. docs/00_CONTEXT
 2. docs/01_DECISIONS
 3. tickets/ and docs/02_TICKETS
@@ -115,11 +119,11 @@ Review order:
 5. diagrams/ and project/
 6. docs/04_CASE_STUDY
 
-## Tooling
+### Tooling
 
 - PowerShell
 - Git
-- Obsidian
+- Visual Studio Code
 - Microsoft Visio
 - Microsoft Project
 
