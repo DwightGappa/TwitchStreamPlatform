@@ -1,5 +1,7 @@
 # TwitchStreamPlatform
 
+![Status: Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-yellow)
+
 ## Overview
 
 **TwitchStreamPlatform is a deliberately documented, end-to-end project demonstrating the design, planning, and execution of a Linux-based live streaming platform.**
@@ -29,6 +31,14 @@ Rather than showcasing isolated technical skills, the repository emphasizes:
 The structure, tooling, and documentation style reflect real-world enterprise environments where clarity, auditability, and communication are as important as implementation.
 
 A non-technical outreach purpose exists for the platform, but it is acknowledged only at a high level; the **technical and professional focus remains squarely on systems and project execution**.
+
+## Documentation
+
+📄 **Live Documentation (Work in Progress):**  
+<https://dwightgappa.github.io/TwitchStreamPlatform/>
+
+The repository remains the system of record; the documentation site provides
+a reader‑friendly view of the evolving case study.
 
 ## Repository
 
