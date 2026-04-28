@@ -33,7 +33,7 @@ A non-technical outreach purpose exists for the platform, but it is acknowledged
 ## Repository
 
 **Source Repository:**  
-<https://github.com/…/TwitchStreamPlatform>
+<https://github.com/DwightGappa/TwitchStreamPlatform>
 
 This repository contains the complete project record, including:
 
