@@ -1,40 +1,44 @@
-# ADR-001: Documentation Model
+# ADR‑001: Documentation Model
 
-## Status
+**Status:** Accepted  
+**Date:** 2026‑04‑XX
 
-Accepted
+---
 
 ## Context
 
-This project is being intentionally documented as a **work in progress** to support
-reviewability, learning, and reproducibility. The project involves transitioning a
-functioning system from Windows to Linux, with validation performed first in a virtual
-environment and later recreated on physical hardware.
+This project prioritizes documentation as a durable, authoritative system of record rather than an after‑the‑fact artifact. Assumptions, decisions, and outcomes must remain reviewable even if conversational or transient context is lost.
 
-Because the primary deliverable of this project is the **process**, documentation must
-capture not only the technical outcome, but also:
+This documentation model is explicitly intended to support a **change‑controlled migration project**, where decisions, risks, and execution boundaries must remain reviewable over time.
 
-- context and intent,
-- decisions and rationale,
-- current state and progress,
-- and lessons learned as the work unfolds.
+The project assumes:
 
-The documentation model must support incremental updates, be human‑readable,
-version‑controlled, and suitable for both technical and non‑technical review.
+- Context loss can occur at any time
+- Git history is the only reliable audit trail
+- Decisions should be captured *before* execution
+- Documentation must stand independently of memory or discussion
+
+---
 
 ## Decision
 
-The project will use a **Markdown‑first, Git‑backed documentation model** with clear
-separation between documentation artifacts and execution artifacts.
+- Markdown files stored in Git are the authoritative documentation source  
+- Git commit history serves as the audit trail  
+- Documentation is created incrementally and committed frequently  
+- Pre‑execution documentation is intentional and valid  
+- No retrospective cleanup or undocumented changes are permitted  
 
-Specifically:
+---
 
-- Markdown (`.md`) files are the system of record for all project documentation
-- Documentation lives inside the project repository and is version‑controlled with Git
-- Documentation is written **as work is performed**, not retroactively
-- Selected documentation is published via GitHub Pages to support external review
-- The repository remains the authoritative system of record
-- Git commit history serves as an audit trail of progress and decision‑making
+## Consequences
 
-Microsoft 365 Copilot may be used as a **guided support tool** to improve clarity and
-structure of documentation, but all planning, decisions, and technical work remain
+- Documentation becomes a primary deliverable of the project  
+- Execution may be delayed in favor of clarity and reproducibility  
+- Readers can resume project context from the repository alone  
+- The project can be reviewed, handed off, or repeated without prior discussion  
+
+---
+
+## Notes
+
+This ADR establishes documentation discipline as a control mechanism, not a reporting activity.
