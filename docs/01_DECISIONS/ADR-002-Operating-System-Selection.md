@@ -1,113 +1,160 @@
-# ADR-002 – Operating System Selection (Streaming Platform)
+# ADR‑002: Operating System Selection (Streaming Platform)
 
-## Status
-Accepted
+<div class="phase-banner">
+  <strong>Status:</strong> Accepted<br>
+  <strong>Change Control:</strong> Required · Applies to All Phases
+</div>
+
+---
 
 ## Decision
 
-Select **Zorin OS 18**, based on **Ubuntu LTS 24.04**, as the target operating system
-for the dedicated streaming/compositing computer.
+<div class="panel">
+  <div class="panel-header">
+    Operating System Selection
+    <span class="status status-approved">Accepted</span>
+  </div>
 
-This operating system will be used for:
-- Initial virtual machine validation
-- Subsequent bare‑metal deployment after testing
+  Select <strong>Zorin OS 18</strong>, based on
+  <strong>Ubuntu LTS 24.04</strong>, as the target operating
+  system for the dedicated streaming and compositing computer.
+</div>
+
+The selected operating system will be used for:
+
+- Initial validation in a virtual machine
+- Subsequent bare‑metal deployment following successful testing
 
 ---
 
 ## Context
 
-The current streaming platform operates on **Windows 10**, which reaches end of
-support in **October 2026**. The existing system relies on several third‑party streaming
-and audio tools (e.g., OBS, NDI, audio routing software) that are sensitive to operating
-system changes.
+<div class="panel">
+  <div class="panel-header">
+    Background and Constraints
+  </div>
 
-Previous Linux experimentation has shown that third‑party streaming software can
-break easily due to:
+  The current streaming platform operates on
+  <strong>Windows 10</strong>, which reaches end of support in
+  <strong>October 2026</strong>. The existing system relies on
+  third‑party streaming and audio tooling that is sensitive to
+  operating system changes.
+</div>
+
+Prior experimentation with Linux platforms has demonstrated
+increased failure risk due to:
+
 - Dependency changes
 - Kernel updates
 - Package version drift
 
-Hardware availability and budget constraints were explicitly considered as part of the
-platform selection process.
+Hardware availability and budget constraints were explicitly
+considered. Any replacement operating system must therefore
+prioritize:
 
-As a result, the replacement operating system must prioritize:
 - Long‑term stability
 - Predictable update behavior
 - A mature package ecosystem
-- Low friction for transitioning from a Windows‑based workflow
+- Minimal friction transitioning from a Windows‑based workflow
 
 ---
 
 ## Options Considered
 
-### Windows 11
-- ✅ Familiar environment
-- ✅ Existing streaming tooling compatibility
-- ❌ Requires dedicating an additional computer for streaming
-- ❌ Existing Windows 11 2‑in‑1 laptop is shared with other users and unavailable
-- ❌ Purchasing an additional dedicated computer is not financially feasible
-- ❌ Does not align with long‑term migration and learning objectives
+<div class="panel">
+  <div class="panel-header">
+    Windows 11
+    <span class="status status-superseded">Rejected</span>
+  </div>
 
-**Outcome:**  
-Windows 11 was not pursued due to hardware availability and cost constraints. While
-technically viable, it does not currently provide a realistic or sustainable path forward
-for a dedicated streaming system.
+  <ul>
+    <li>✅ Familiar environment</li>
+    <li>✅ Existing streaming tooling compatibility</li>
+    <li>❌ Requires an additional dedicated computer</li>
+    <li>
+      ❌ Existing Windows 11 laptop unavailable for
+      exclusive use
+    </li>
+    <li>
+      ❌ Additional hardware purchase not financially
+      feasible
+    </li>
+    <li>
+      ❌ Does not align with long‑term migration
+      objectives
+    </li>
+  </ul>
 
----
-
-### Vanilla Ubuntu LTS
-- ✅ Strong stability and ecosystem
-- ✅ Long‑term support guarantees
-- ❌ Requires more manual configuration for desktop usability
-- ❌ Higher transition overhead from Windows workflows
-
----
-
-### Zorin OS 18 (Ubuntu LTS–Based)
-- ✅ Built on Ubuntu LTS 24.04
-- ✅ Long‑term support and predictable updates
-- ✅ Desktop environment designed for Windows transition
-- ✅ Reduced friction for daily usability
-- ✅ Built‑in tooling to ease migration (e.g., OneDrive integration)
+  <strong>Outcome:</strong> Rejected due to hardware availability
+  and cost constraints.
+</div>
 
 ---
 
-## Decision Rationale
+<div class="panel">
+  <div class="panel-header">
+    Vanilla Ubuntu LTS
+    <span class="status status-draft">Not Selected</span>
+  </div>
 
-Zorin OS 18 was selected because it balances **enterprise‑grade Linux stability** with a
-desktop experience optimized for Windows users. This reduces operational friction
-during testing while preserving the benefits of a stable Linux platform.
+  <ul>
+    <li>✅ Strong stability guarantees</li>
+    <li>✅ Mature and well‑supported package ecosystem</li>
+    <li>❌ Higher configuration overhead</li>
+    <li>
+      ❌ Less streamlined desktop experience for hybrid
+      streaming workflows
+    </li>
+  </ul>
+</div>
 
-By leveraging Ubuntu LTS under the hood, the platform benefits from:
-- Broad hardware compatibility
-- Extensive community and vendor documentation
-- Proven OBS Studio support
+---
 
-This selection supports the project goal of validating a Linux‑based streaming platform
-without introducing unnecessary usability complexity.
+<div class="panel">
+  <div class="panel-header">
+    Zorin OS 18 (Ubuntu LTS 24.04)
+    <span class="status status-approved">Selected</span>
+  </div>
+
+  <ul>
+    <li>✅ Built on Ubuntu LTS stability base</li>
+    <li>✅ Predictable update model</li>
+    <li>
+      ✅ Desktop experience optimized for Windows
+      transitions
+    </li>
+    <li>
+      ✅ Reduced configuration friction for streaming
+      workloads
+    </li>
+  </ul>
+</div>
 
 ---
 
 ## Consequences
 
-### Positive
-- Stable, LTS‑backed foundation for long‑term use
-- Faster iteration during virtual machine testing
-- Reduced learning curve during Windows → Linux transition
-- Sustainable path beyond Windows 10 end‑of‑support
+<div class="panel">
+  <div class="panel-header">
+    Expected Outcomes
+  </div>
 
-### Negative / Risks
-- Third‑party streaming tools may still break or require workarounds
-- Zorin‑specific abstractions may obscure some underlying Ubuntu behavior
-- Additional validation required during VM → bare‑metal migration
-
-These risks are accepted and intentionally documented as part of the case study.
+  Selecting Zorin OS 18 establishes a stable Linux baseline
+  suitable for controlled validation and eventual production
+  deployment while minimizing operational risk during the
+  Windows‑to‑Linux migration.
+</div>
 
 ---
 
-## Follow‑Up Actions
+## Notes
 
-- Validate Zorin OS 18 in a virtual machine
-- Test OBS, NDI video, and audio routing workflows
-- Document compatibility gaps and mitigations
-- Assess readiness for bare‑metal deployment
+<div class="panel">
+  <div class="panel-header">
+    Change Control Notes
+  </div>
+
+  This operating system selection is binding for all validation
+  and deployment phases unless explicitly superseded by a future
+  ADR.
+</div>
