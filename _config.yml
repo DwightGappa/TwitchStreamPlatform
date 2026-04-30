@@ -1,0 +1,48 @@
+# Site settings
+title: TwitchStreamPlatform
+description: >
+  Change-controlled Windows-to-Linux migration case study documenting
+  scope, decisions, risks, and phased execution.
+
+baseurl: "/TwitchStreamPlatform"
+url: "https://dwightgappa.github.io"
+
+# Theme
+theme: just-the-docs
+
+# Enable search
+search_enabled: true
+
+# Navigation behavior
+heading_anchors: true
+nav_sort: case_insensitive
+
+# Footer (optional but professional)
+footer_content: >
+  TwitchStreamPlatform – Change‑Controlled Migration Case Study
+
+# Custom CSS (THIS IS THE KEY PART)
+just_the_docs:
+  css:
+    - "/assets/css/playbook.css"
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Enable HTML in Markdown (required for panels/banners)
+plugins:
+  - jekyll-seo-tag
+
+# Allow raw HTML blocks in Markdown
+liquid:
+  error_mode: strict
+
+# Exclude non-site files
+exclude:
+  - README.md
+  - .gitignore
+  - .github
+  - .vscode
