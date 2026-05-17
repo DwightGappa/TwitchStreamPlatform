@@ -1,80 +1,112 @@
-# ADR-004 Documentation and Editor Tooling
+---
+layout: default
+title: ADR-004 Documentation and Editor Tooling
+permalink: /docs/decisions/adr-004/
+---
 
-## Status
-
-Accepted
+<div class="phase-banner">
+  <strong>Status:</strong> Accepted<br>
+  <strong>Change Control:</strong> Required · Applies to All Phases
+</div>
 
 ---
 
 ## Decision
 
-Use Visual Studio Code as the primary editor for managing all project documentation, scripts, and execution artifacts.
+<div class="panel">
+  <div class="panel-header">
+    Editor Selection
+    <span class="status status-approved">Accepted</span>
+  </div>
 
-Markdown files tracked in Git are the system of record. Editor choice does not own or define the repository structure.
+  Use Visual Studio Code as the primary editor for managing all project
+  documentation, scripts, and execution artifacts.
+</div>
+
+Markdown files tracked in Git are the system of record. Editor choice does
+not own or define the repository structure.
 
 ---
 
 ## Context
 
-This project relies on documentation as a first class operational artifact, including:
+<div class="panel">
+  <div class="panel-header">
+    Operational Requirements
+  </div>
 
-- Architecture decision records
-- Build and validation checklists
-- Execution tickets
-- Status tracking and recovery notes
+  This project relies on documentation as a first class operational artifact,
+  including:
 
-Early project planning used Obsidian for Markdown editing and navigation. As the project moved from conceptual planning into hands on execution, several constraints became apparent.
+  <ul>
+    <li>Architecture decision records</li>
+    <li>Build and validation checklists</li>
+    <li>Execution tickets</li>
+    <li>Status tracking and recovery notes</li>
+  </ul>
+</div>
 
-Specifically:
+Early project planning used Obsidian for Markdown editing and navigation. As
+the project moved from conceptual planning into hands on execution, several
+constraints became apparent. Specifically:
 
-- Editor controlled concepts such as vault identity were coupled to filesystem structure
-- Renaming or restructuring documentation introduced unintended folder changes
-- Execution phase work required tight integration between documentation, scripts, logs, and Git history
+- Editor controlled concepts (vault identity) were coupled to filesystem
+- Renaming or restructuring introduced unintended folder changes
+- Execution required tight integration between docs, scripts, and Git
 
-The project focus shifted from exploratory note taking to deterministic execution, auditability, and reproducibility. This required an editor that treats the filesystem and Git as authoritative and immutable unless explicitly changed.
+The project focus shifted to deterministic execution and auditability. This
+required an editor that treats the filesystem and Git as authoritative.
 
 ---
 
 ## Options Considered
 
-### Obsidian
+<div class="panel">
+  <div class="panel-header">
+    Obsidian
+    <span class="status status-superseded">Rejected</span>
+  </div>
 
-- Markdown first storage
-- Strong support for exploratory note taking
-- Backlinks and graph based navigation
-
-Limitations identified during execution readiness:
-
-- Tight coupling between editor state and filesystem structure
-- Implicit ownership of the documentation root
-- Limited integration with scripting and execution workflows
-
-Outcome:
-Obsidian was deprioritized once execution began due to filesystem determinism and tooling boundary concerns.
+  <ul>
+    <li>✅ Markdown first storage</li>
+    <li>✅ Strong support for exploratory note taking</li>
+    <li>❌ Tight coupling between editor state and filesystem</li>
+    <li>❌ Limited integration with execution workflows</li>
+  </ul>
+</div>
 
 ---
 
-### Visual Studio Code
+<div class="panel">
+  <div class="panel-header">
+    Visual Studio Code
+    <span class="status status-approved">Selected</span>
+  </div>
 
-- Treats the filesystem as authoritative
-- Native Git integration for diff, blame, and commit history
-- First class support for PowerShell and automation scripts
-- Single workspace for documentation, scripts, and logs
-- Established proficiency and long term use for PowerShell development
-
-Outcome:
-Visual Studio Code was selected as the primary editor for all project artifacts.
+  <ul>
+    <li>✅ Treats the filesystem as authoritative</li>
+    <li>✅ Native Git integration (diff, blame, history)</li>
+    <li>✅ First class support for PowerShell and automation</li>
+    <li>✅ Established proficiency for script development</li>
+  </ul>
+</div>
 
 ---
 
 ## Consequences
 
-### Positive
+<div class="panel">
+  <div class="panel-header">
+    Expected Outcomes
+  </div>
 
-- Clear separation between documentation content and editing tools
-- Stable and predictable repository structure
-- Improved integration between documentation and execution tooling
-- Strong alignment with infrastructure as code workflows
+  <ul>
+    <li>Clear separation between documentation and editing tools</li>
+    <li>Stable and predictable repository structure</li>
+    <li>Improved integration with execution tooling</li>
+    <li>Alignment with infrastructure as code workflows</li>
+  </ul>
+</div>
 
 ### Neutral
 
@@ -91,6 +123,14 @@ Visual Studio Code was selected as the primary editor for all project artifacts.
 
 ## Notes
 
-Obsidian may still be used informally for read only review or ad hoc exploration, but it is not part of the project execution toolchain.
+<div class="panel">
+  <div class="panel-header">
+    Usage Notes
+  </div>
 
-This decision reflects the transition from planning to execution and supports long term reproducibility and reviewability.
+  Obsidian may still be used informally for read only review, but it is not
+  part of the project execution toolchain.
+</div>
+
+This decision reflects the transition from planning to execution and supports
+long term reproducibility and reviewability.
