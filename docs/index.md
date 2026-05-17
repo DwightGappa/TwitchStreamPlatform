@@ -1,4 +1,8 @@
-# TwitchStreamPlatform
+---
+layout: default
+title: "TwitchStreamPlatform"
+permalink: /
+---
 
 <div class="panel info">
 <strong>Status:</strong> Active · Work in Progress  
