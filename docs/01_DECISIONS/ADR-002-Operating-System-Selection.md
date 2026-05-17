@@ -1,4 +1,8 @@
-# ADR‑002: Operating System Selection (Streaming Platform)
+---
+layout: default
+title: "ADR‑002: Operating System Selection (Streaming Platform)"
+permalink: /docs/decisions/adr-002/
+---
 
 <div class="phase-banner">
   <strong>Status:</strong> Accepted<br>
