@@ -1,4 +1,8 @@
-# Risk Register
+---
+layout: default
+title: "Risk Register"
+permalink: /docs/risk-register/
+---
 
 <div class="panel info">
 <strong>Status:</strong> Active · Maintained  
