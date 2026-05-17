@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ADR-004 Documentation and Editor Tooling
+title: "ADR‑004: Documentation and Editor Tooling"
 permalink: /docs/decisions/adr-004/
 ---
 
