@@ -1,6 +1,7 @@
 # ADR-003 – Virtual Machine vs Bare‑Metal Validation Strategy
 
 ## Status
+
 Accepted
 
 ## Decision
@@ -20,6 +21,7 @@ audio routing utilities) that have previously demonstrated fragility in Linux
 environments.
 
 Given:
+
 - Limited hardware available for immediate replacement
 - The need to preserve an operational Windows‑based streaming setup during testing
 - The risk of extended downtime if third‑party software fails after OS migration
@@ -31,6 +33,7 @@ Hyper‑V is included with Windows 10 Pro and is already used extensively in the
 environment for testing and experimentation.
 
 Hyper‑V was selected for VM validation because:
+
 - It is natively integrated into the Windows kernel
 - It offers strong performance characteristics compared to desktop hypervisors
 - It is well‑suited for repeated test‑and‑reset workflows
@@ -44,6 +47,7 @@ relevant to production IT support and infrastructure roles.
 ## Options Considered
 
 ### Direct Bare‑Metal Installation
+
 - ✅ Simplifies hardware stack
 - ✅ Eliminates virtualization overhead
 - ❌ High risk of prolonged downtime if validation fails
@@ -53,6 +57,7 @@ relevant to production IT support and infrastructure roles.
 ---
 
 ### VM‑First Validation with Later Bare‑Metal Deployment
+
 - ✅ Isolates experimentation from production hardware
 - ✅ Enables snapshot‑based rollback and recovery
 - ✅ Preserves a working streaming environment during testing
@@ -68,6 +73,7 @@ A VM‑first validation strategy was selected to minimize risk while testing a n
 Linux‑based streaming platform that depends on fragile third‑party software.
 
 Using Hyper‑V allows validation to occur:
+
 - Without disrupting existing workflows
 - With fast recovery from failed experiments
 - In an environment representative of common enterprise tooling
@@ -95,6 +101,7 @@ Acceptance criteria may be refined as testing progresses.
 ## Consequences
 
 ### Positive
+
 - Reduced risk of extended downtime
 - Safer validation of third‑party software
 - Clear isolation of failure modes
@@ -102,6 +109,7 @@ Acceptance criteria may be refined as testing progresses.
 - Practical, real‑world virtualization experience
 
 ### Negative / Risks
+
 - VM performance characteristics may differ from bare metal
 - Hardware‑specific issues may surface post‑migration
 - Additional effort required during validation phase
