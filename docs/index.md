@@ -14,9 +14,9 @@ updated as work progresses.
 ## Overview
 
 <div class="panel neutral">
-This case study documents a <strong>controlled Windows‑to‑Linux migration</strong>
-for a dedicated Twitch streaming workstation using deliberate change‑control
-practices rather than ad‑hoc execution.
+This case study documents a <strong>controlled Windows‑to‑Linux
+migration</strong> for a dedicated Twitch streaming workstation using
+deliberate change‑control practices.
 </div>
 
 The technical system being built is real, but the **primary deliverable is the
