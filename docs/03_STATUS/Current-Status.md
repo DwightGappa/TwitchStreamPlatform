@@ -4,8 +4,6 @@ title: Current Status
 permalink: /docs/status/current-status/
 ---
 
-# Current Status
-
 <div class="status-chip status-wip">Active · Work in Progress</div>
 
 <p>
@@ -24,11 +22,11 @@ Windows‑to‑Linux system transition. Documentation structure, decision record
 and project framing are being established prior to beginning hands‑on
 implementation.
 
-The virtual machine build phase has **not yet started**. This is intentional
-and reflects a deliberate, project‑managed approach rather than ad‑hoc
-execution. This reflects a deliberate **change‑controlled migration
-approach**, where scope definition, risk identification, and decision records
-precede hands‑on execution.
+The virtual machine build phase has **not yet started**. This is
+intentional and reflects a deliberate, project‑managed approach rather
+than ad‑hoc execution. This reflects a deliberate
+**change‑controlled migration approach**, where scope definition, risk
+identification, and decision records precede hands‑on execution.
 
 </div>
 
