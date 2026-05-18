@@ -32,8 +32,8 @@ The project explicitly assumes:
 - Documentation must stand independently of discussion or memory
 
 This documentation model is intended to support a **change‑controlled migration
-project**, where decisions, risks, and execution boundaries must remain reviewable
-over time.
+project, where decisions, risks, and execution boundaries must remain
+reviewable over time.**
 
 ---
 
