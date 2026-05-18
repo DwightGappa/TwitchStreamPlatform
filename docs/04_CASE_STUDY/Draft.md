@@ -47,21 +47,27 @@ permalink: /docs/case-study/draft/
     Active Execution
   </div>
 
-  <strong>Current State:</strong>
+## Current State
+
   <ul>
     <li>Operating system under test: Linux (virtual environment)</li>
     <li>Existing reference system: Windows-based configuration</li>
   </ul>
 
-  <strong>In Progress:</strong>
+## In Progress
+
   <ul>
     <li>Validating required workflows in the virtual environment</li>
     <li>Identifying compatibility gaps and risks</li>
   </ul>
 </div>
 
-## Notes on documentation and tooling
+<div class="panel info">
+  <div class="panel-header">
+    Documentation Notes
+  </div>
 
-This documentation is being refined with help from Microsoft 365 Copilot
-as a guided support and clarity-checking tool.
-All planning, testing, and decisions remain my own.
+  This documentation is being refined with help from Microsoft 365 Copilot
+  as a guided support and clarity-checking tool.
+  All planning, testing, and decisions remain my own.
+</div>
