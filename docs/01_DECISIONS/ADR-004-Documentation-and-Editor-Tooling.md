@@ -47,7 +47,7 @@ not own or define the repository structure.
 </div>
 
 Early project planning used Obsidian for Markdown editing and navigation. As
-the project moved from conceptual planning into hands on execution, several
+the project moved from conceptual planning into hands-on execution, several
 constraints became apparent. Specifically:
 
 - Editor controlled concepts (vault identity) were coupled to filesystem
@@ -110,14 +110,22 @@ required an editor that treats the filesystem and Git as authoritative.
 
 ### Neutral
 
-- Loss of editor specific features such as graph views
-- These features were not required for execution or review
+<div class="panel">
+  <ul>
+    <li>Loss of editor specific features such as graph views</li>
+    <li>These features were not required for execution or review</li>
+  </ul>
+</div>
 
 ### Guardrails
 
-- Markdown remains editor agnostic
-- No documentation depends on editor specific metadata or formats
-- Git remains the sole audit and history mechanism
+<div class="panel">
+  <ul>
+    <li>Markdown remains editor agnostic</li>
+    <li>No documentation depends on editor specific metadata or formats</li>
+    <li>Git remains the sole audit and history mechanism</li>
+  </ul>
+</div>
 
 ---
 
