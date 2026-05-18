@@ -17,16 +17,12 @@ progresses.
 
 ## Summary
 
-The project is currently in the **planning and preparation phase** of a
-Windows‑to‑Linux system transition. Documentation structure, decision records,
-and project framing are being established prior to beginning hands‑on
-implementation.
-
-The virtual machine build phase has **not yet started**. This is
-intentional and reflects a deliberate, project‑managed approach rather
-than ad‑hoc execution. This reflects a deliberate
-**change‑controlled migration approach**, where scope definition, risk
-identification, and decision records precede hands‑on execution.
+The project is in the **planning and preparation phase** for the
+Windows‑to‑Linux transition. Documentation structure, decision records,
+and project framing are being established before implementation. The
+virtual machine build phase has **not yet started**, reflecting a
+deliberate **change‑controlled migration approach** where planning
+precedes hands‑on execution.
 
 </div>
 
