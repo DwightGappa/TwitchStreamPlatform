@@ -23,8 +23,10 @@ permalink: /docs/decisions/adr-004/
   documentation, scripts, and execution artifacts.
 </div>
 
-Markdown files tracked in Git are the system of record. Editor choice does
-not own or define the repository structure.
+<div class="panel neutral">
+  Markdown files tracked in Git are the system of record. Editor choice does
+  not own or define the repository structure.
+</div>
 
 ---
 
