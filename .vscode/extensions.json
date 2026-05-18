@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "davidanson.vscode-markdownlint",
+        "ms-vscode.powershell",
+        "castwide.solargraph",
+        "github.vscode-github-pages",
+        "ms-docs.docs-markdown",
+        "ms-vscode.markdown-preview-github-styles"
+    ]
+}

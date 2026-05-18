@@ -1,118 +1,166 @@
-# ADR-003 – Virtual Machine vs Bare‑Metal Validation Strategy
+---
+layout: default
+title: "ADR‑003: VM vs Bare‑Metal Validation Strategy"
+permalink: /docs/decisions/adr-003/
+---
 
-## Status
-Accepted
+<div class="phase-banner">
+  <strong>Status:</strong> Accepted<br>
+  <strong>Change Control:</strong> Required · Applies to All Phases
+</div>
+
+---
 
 ## Decision
 
-Validate the streaming platform on **Zorin OS 18** using a **virtual machine (VM)** before
-performing a **bare‑metal installation** on the dedicated streaming/compositing computer.
+<div class="panel">
+  <div class="panel-header">
+    Validation Strategy
+    <span class="status status-approved">Accepted</span>
+  </div>
 
-Bare‑metal deployment will occur only after core streaming workflows are confirmed
-functional in the VM environment.
+  Validate the streaming platform on **Zorin OS 18** using a **virtual machine
+  (VM)** before performing a **bare‑metal installation** on the dedicated
+  streaming/compositing computer.
+
+  Bare‑metal deployment will occur only after core streaming workflows are
+  confirmed functional in the VM environment.
+</div>
 
 ---
 
 ## Context
 
-The streaming platform depends on multiple third‑party components (e.g., OBS, NDI,
-audio routing utilities) that have previously demonstrated fragility in Linux
-environments.
+<div class="panel">
+  <div class="panel-header">
+    Fragility and Risk
+  </div>
 
-Given:
-- Limited hardware available for immediate replacement
-- The need to preserve an operational Windows‑based streaming setup during testing
-- The risk of extended downtime if third‑party software fails after OS migration
+  The streaming platform depends on multiple third‑party components (e.g., OBS,
+  NDI, audio routing utilities) that have previously demonstrated fragility in
+  Linux environments.
 
-A staged validation approach is required to reduce operational and recovery risk.
+  Given:
+  <ul>
+    <li>Limited hardware available for replacement</li>
+    <li>The need to preserve a working Windows setup during testing</li>
+    <li>Risk of extended downtime if third‑party software fails</li>
+  </ul>
 
-Virtual machine validation will be performed using **Hyper‑V on a Windows 10 Pro host**.
-Hyper‑V is included with Windows 10 Pro and is already used extensively in the existing
-environment for testing and experimentation.
+  A staged validation approach is required to reduce operational risk.
+</div>
 
-Hyper‑V was selected for VM validation because:
-- It is natively integrated into the Windows kernel
-- It offers strong performance characteristics compared to desktop hypervisors
-- It is well‑suited for repeated test‑and‑reset workflows
-- It reflects real‑world virtualization platforms commonly used in IT environments
+Virtual machine validation will be performed using **Hyper‑V on a Windows 10
+Pro host**. Hyper‑V is included with Windows 10 Pro and is already used
+extensively for testing and experimentation.
 
-This also provides an opportunity to reinforce practical virtualization experience
-relevant to production IT support and infrastructure roles.
+Hyper‑V was selected because it is natively integrated, offers strong
+performance, and reflects real‑world virtualization platforms. This also
+provides an opportunity to reinforce practical virtualization experience.
 
 ---
 
 ## Options Considered
 
-### Direct Bare‑Metal Installation
-- ✅ Simplifies hardware stack
-- ✅ Eliminates virtualization overhead
-- ❌ High risk of prolonged downtime if validation fails
-- ❌ Difficult rollback without full OS reinstallation
-- ❌ No isolation for experimentation or failure analysis
+<div class="panel">
+  <div class="panel-header">
+    Direct Bare‑Metal Installation
+    <span class="status status-superseded">Rejected</span>
+  </div>
+
+  <ul>
+    <li>✅ Simplifies hardware stack</li>
+    <li>✅ Eliminates virtualization overhead</li>
+    <li>❌ High risk of prolonged downtime if validation fails</li>
+    <li>❌ Difficult rollback without full OS reinstallation</li>
+  </ul>
+</div>
 
 ---
 
-### VM‑First Validation with Later Bare‑Metal Deployment
-- ✅ Isolates experimentation from production hardware
-- ✅ Enables snapshot‑based rollback and recovery
-- ✅ Preserves a working streaming environment during testing
-- ✅ Supports controlled iteration and documentation
-- ❌ Adds temporary setup complexity
-- ❌ Requires re‑validation after migration to bare metal
+<div class="panel">
+  <div class="panel-header">
+    VM‑First Validation
+    <span class="status status-approved">Selected</span>
+  </div>
+
+  <ul>
+    <li>✅ Isolates experimentation from production hardware</li>
+    <li>✅ Enables snapshot‑based rollback and recovery</li>
+    <li>✅ Preserves working streaming environment during testing</li>
+    <li>❌ Requires re‑validation after migration to bare metal</li>
+  </ul>
+</div>
 
 ---
 
 ## Decision Rationale
 
-A VM‑first validation strategy was selected to minimize risk while testing a new
-Linux‑based streaming platform that depends on fragile third‑party software.
+<div class="panel">
+  <div class="panel-header">
+    Strategic Rationale
+  </div>
 
-Using Hyper‑V allows validation to occur:
-- Without disrupting existing workflows
-- With fast recovery from failed experiments
-- In an environment representative of common enterprise tooling
+  A VM‑first validation strategy was selected to minimize risk while testing a
+  new Linux‑based streaming platform that depends on fragile software.
 
-Only after functional stability is demonstrated in the VM will the project proceed to
-bare‑metal installation. This mirrors standard infrastructure migration practices and
-supports disciplined, audit‑friendly execution.
+  Using Hyper‑V allows validation to occur:
+  <ul>
+    <li>Without disrupting existing workflows</li>
+    <li>With fast recovery from failed experiments</li>
+    <li>In an environment representative of common enterprise tooling</li>
+  </ul>
+
+  Only after functional stability is demonstrated will the project proceed to
+  bare‑metal installation.
+</div>
 
 ---
 
 ## Acceptance Criteria for Bare‑Metal Migration
 
-Bare‑metal deployment will proceed only after the following are verified in the VM:
+<div class="panel">
+  <div class="panel-header">
+    Success Criteria
+  </div>
 
-- OBS Studio launches reliably and can produce a stream
-- NDI video capture functions as expected
-- Audio routing workflow is viable (native or alternative)
-- Webcam input is usable
-- System stability is acceptable during typical usage windows
-
-Acceptance criteria may be refined as testing progresses.
+  Bare‑metal deployment will proceed only after the following are verified:
+  <ul>
+    <li>OBS Studio launches reliably and can produce a stream</li>
+    <li>NDI video capture functions as expected</li>
+    <li>Audio routing workflow is viable</li>
+    <li>Webcam input is usable</li>
+    <li>System stability is acceptable during typical usage windows</li>
+  </ul>
+</div>
 
 ---
 
 ## Consequences
 
-### Positive
-- Reduced risk of extended downtime
-- Safer validation of third‑party software
-- Clear isolation of failure modes
-- Reusable documentation of migration steps
-- Practical, real‑world virtualization experience
+<div class="panel">
+  <div class="panel-header">
+    Expected Outcomes
+  </div>
 
-### Negative / Risks
-- VM performance characteristics may differ from bare metal
-- Hardware‑specific issues may surface post‑migration
-- Additional effort required during validation phase
-
-These risks are accepted to preserve platform reliability and recoverability.
+  <ul>
+    <li>Reduced risk of extended downtime</li>
+    <li>Safer validation of third‑party software</li>
+    <li>Clear isolation of failure modes</li>
+    <li>Reusable documentation of migration steps</li>
+    <li>Practical, real‑world virtualization experience</li>
+  </ul>
+</div>
 
 ---
 
 ## Follow‑Up Actions
 
-- Create and configure a Zorin OS 18 virtual machine in Hyper‑V
-- Validate streaming workflows against acceptance criteria
-- Document issues, mitigations, and stability observations
-- Revisit this decision prior to bare‑metal deployment
+<div class="panel">
+  <ul>
+    <li>Create and configure a Zorin OS 18 virtual machine in Hyper‑V</li>
+    <li>Validate streaming workflows against acceptance criteria</li>
+    <li>Document issues, mitigations, and stability observations</li>
+    <li>Revisit this decision prior to bare‑metal deployment</li>
+  </ul>
+</div>

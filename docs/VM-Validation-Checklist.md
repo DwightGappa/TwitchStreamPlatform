@@ -1,541 +1,243 @@
-# VM Validation Checklist – Linux Streaming Platform
+---
+layout: default
+title: "VM Validation Checklist – Linux Streaming Platform"
+permalink: /docs/validation/vm-checklist/
+---
+
+<div class="panel panel-highlight">
 
 ## Purpose
 
-This checklist defines the **virtual machine–specific validation process** for the
-Linux streaming platform.
+This checklist defines the **virtual machine–specific validation process** for
+the Linux streaming platform.
 
 All build steps are executed according to the canonical build document:
+[Build Checklist – Linux Streaming Platform](/docs/validation/build-checklist/)
 
-[[Build-Checklist-Linux-Streaming-Platform]]
+This checklist focuses on **validation, isolation, rollback, and recovery** in
+a VM context and does not redefine build logic.
 
-This checklist focuses on **validation, isolation, rollback, and recovery** in a VM
-context and does not redefine build logic.
+</div>
 
 ---
 
-## Scope of VM Validation
+<div class="panel">
+  <div class="panel-header">
+    Scope of VM Validation
+  </div>
 
-VM validation is used to:
-- Safely test build steps before bare‑metal deployment
-- Isolate failures caused by third‑party software
-- Capture repeatable recovery points
-- Validate automation readiness
+  VM validation is used to:
+  <ul>
+    <li>Safely test build steps before bare‑metal deployment</li>
+    <li>Isolate failures caused by third‑party software</li>
+    <li>Capture repeatable recovery points</li>
+    <li>Validate automation readiness</li>
+  </ul>
 
-This checklist assumes:
-- Hyper‑V is used as the VM host
-- VM snapshots (checkpoints) are available
-- The generalized build checklist is followed in order
+  This checklist assumes Hyper‑V is used as the host and VM snapshots
+  are available.
+</div>
 
 ---
 
 ## VM Baseline Preparation
 
-- [ ] VM created with appropriate CPU, memory, and storage
-- [ ] Networking configured (NAT / bridged as required)
-- [ ] VM boots successfully
-- [ ] Initial snapshot taken (Pre‑Build Baseline)
+<div class="panel">
+  <ul>
+    <li>[ ] VM created with appropriate CPU, memory, and storage</li>
+    <li>[ ] Networking configured (NAT / bridged as required)</li>
+    <li>[ ] VM boots successfully</li>
+    <li>[ ] Initial snapshot taken (Pre‑Build Baseline)</li>
+  </ul>
 
-✅ VM Checkpoint: **Pre‑Build Baseline**
+  ✅ VM Checkpoint: <strong>Pre‑Build Baseline</strong>
+</div>
 
 ---
 
 ## Build Execution Validation
 
-The following sections correspond directly to steps in the **Build Checklist**.
-For each phase, the build checklist is executed and then validated here.
+The following sections correspond to steps in the **Build Checklist**.
+For each phase, the checklist is executed and then validated here.
 
 ---
 
-## 1. Base OS & Updates Validation
+<div class="panel">
+  <div class="panel-header">
+    1. Base OS & Updates Validation
+  </div>
 
-**Reference:**  
-Build Checklist §1–§2
+  **Reference:** Build Checklist §1–§2
 
-- [ ] Zorin OS install completed successfully
-- [ ] System updates applied without errors
-- [ ] Reboot succeeds
-- [ ] Desktop usable
+  <ul>
+    <li>[ ] Zorin OS install completed successfully</li>
+    <li>[ ] System updates applied without errors</li>
+    <li>[ ] Reboot succeeds</li>
+    <li>[ ] Desktop usable</li>
+  </ul>
 
-✅ VM Checkpoint: **Post‑OS‑Update Baseline**
-
-✅ Recovery Action:  
-Rollback to Pre‑Build Baseline if OS instability occurs.
-
----
-
-## 2. SSH & PowerShell Validation
-
-**Reference:**  
-Build Checklist §3–§4
-
-- [ ] SSH service active and accessible
-- [ ] Root SSH login blocked
-- [ ] PowerShell launches successfully
-- [ ] PowerShell usable for non‑root automation
-
-✅ VM Checkpoint: **Remote Access Enabled**
-
-✅ Recovery Action:  
-Rollback to Post‑OS‑Update Baseline.
+  ✅ VM Checkpoint: <strong>Post‑OS‑Update Baseline</strong>
+</div>
 
 ---
 
-## 3. Security Hardening Validation
+<div class="panel">
+  <div class="panel-header">
+    2. SSH & PowerShell Validation
+  </div>
 
-**Reference:**  
-Build Checklist §5
+  **Reference:** Build Checklist §3–§4
 
-- [ ] Hardened configuration applied
-- [ ] SSH and PowerShell remain functional
-- [ ] Desktop usability preserved
+  <ul>
+    <li>[ ] SSH service active and accessible</li>
+    <li>[ ] Root SSH login blocked</li>
+    <li>[ ] PowerShell launches successfully</li>
+    <li>[ ] PowerShell usable for non‑root automation</li>
+  </ul>
 
-✅ VM Checkpoint: **Security Baseline Hardened**
-
-✅ Recovery Action:  
-Rollback to Remote Access Enabled.
-
----
-
-## 4. ZeroTier Validation
-
-**Reference:**  
-Build Checklist §6
-
-- [ ] ZeroTier installed and running
-- [ ] Node joins designated network
-- [ ] Connectivity verified
-- [ ] Reboot persistence confirmed
-
-✅ VM Checkpoint: **ZeroTier Functional**
-
-✅ Recovery Action:  
-Rollback to Security Baseline Hardened.
+  ✅ VM Checkpoint: <strong>Remote Access Enabled</strong>
+</div>
 
 ---
 
-## 5. Synergy Validation
+<div class="panel">
+  <div class="panel-header">
+    3. Security Hardening Validation
+  </div>
 
-**Reference:**  
-Build Checklist §7
+  **Reference:** Build Checklist §5
 
-- [ ] Synergy installs and launches
-- [ ] Input sharing functional over ZeroTier
-- [ ] No unintended access observed
+  <ul>
+    <li>[ ] Hardened configuration applied</li>
+    <li>[ ] SSH and PowerShell remain functional</li>
+    <li>[ ] Desktop usability preserved</li>
+  </ul>
 
-✅ VM Checkpoint: **Operator Control Functional**
-
-✅ Recovery Action:  
-Rollback to ZeroTier Functional.
-
----
-
-## 6. OBS Core Validation
-
-**Reference:**  
-Build Checklist §8.1
-
-- [ ] OBS launches reliably
-- [ ] Scenes and profiles functional
-- [ ] Recording/streaming works
-
-✅ VM Checkpoint: **OBS Core Baseline**
-
-✅ Recovery Action:  
-Rollback to Operator Control Functional.
+  ✅ VM Checkpoint: <strong>Security Baseline Hardened</strong>
+</div>
 
 ---
 
-## 7. OBS WebSocket Validation
+<div class="panel">
+  <div class="panel-header">
+    4. ZeroTier Validation
+  </div>
 
-**Reference:**  
-Build Checklist §8.2
+  **Reference:** Build Checklist §6
 
-- [ ] WebSocket enabled with authentication
-- [ ] Remote control functional over ZeroTier
-- [ ] Stream and scene control validated
+  <ul>
+    <li>[ ] ZeroTier installed and running</li>
+    <li>[ ] Node joins designated network</li>
+    <li>[ ] Connectivity verified</li>
+    <li>[ ] Reboot persistence confirmed</li>
+  </ul>
 
-✅ VM Checkpoint: **OBS Remote Control Enabled**
-
-✅ Recovery Action:  
-Rollback to OBS Core Baseline.
-
----
-
-## 8. NDI Validation
-
-**Reference:**  
-Build Checklist §9
-
-- [ ] NDI source visible and stable
-- [ ] Gaming system video received
-
-✅ VM Checkpoint: **NDI Functional**
-
-✅ Recovery Action:  
-Rollback to OBS Remote Control Enabled.
+  ✅ VM Checkpoint: <strong>ZeroTier Functional</strong>
+</div>
 
 ---
 
-## 9. VBAN Audio Validation
+<div class="panel">
+  <div class="panel-header">
+    5. Synergy Validation
+  </div>
 
-**Reference:**  
-Build Checklist §10
+  **Reference:** Build Checklist §7
 
-- [ ] VBAN stream received
-- [ ] VBAN selectable in OBS
-- [ ] Audio stable and synced
+  <ul>
+    <li>[ ] Synergy installs and launches</li>
+    <li>[ ] Input sharing functional over ZeroTier</li>
+    <li>[ ] No unintended access observed</li>
+  </ul>
 
-✅ VM Checkpoint: **VBAN Audio Functional**
-
-✅ Recovery Action:  
-Rollback to NDI Functional.
-
----
-
-## 10. whisper.cpp Validation (Optional / Advanced)
-
-**Reference:**  
-Build Checklist §11
-
-- [ ] whisper.cpp builds successfully
-- [ ] Real‑time transcription operates
-- [ ] Integration does not destabilize system
-
-✅ VM Checkpoint: **Whisper Functional**
-
-✅ Recovery Action:  
-Rollback to VBAN Audio Functional.
+  ✅ VM Checkpoint: <strong>Operator Control Functional</strong>
+</div>
 
 ---
 
-## 11. Extended Stability Validation
+<div class="panel">
+  <div class="panel-header">
+    6. OBS Core Validation
+  </div>
 
-- [ ] OBS runs for extended session
-- [ ] No crashes or freezes
-- [ ] Reboots preserve configuration
-- [ ] Snapshots remain restorable
+  **Reference:** Build Checklist §8.1
 
-✅ VM Checkpoint: **VM Validation Complete**
+  <ul>
+    <li>[ ] OBS launches reliably</li>
+    <li>[ ] Scenes and profiles functional</li>
+    <li>[ ] Recording/streaming works</li>
+  </ul>
 
----
-
-## VM Validation Outcome
-
-☐ VM build validated successfully  
-☐ VM build failed – rollback required
-
-### Failure Notes
-- ______________________________________
-- ______________________________________
+  ✅ VM Checkpoint: <strong>OBS Core Baseline</strong>
+</div>
 
 ---
 
-## Notes
+<div class="panel">
+  <div class="panel-header">
+    7. OBS WebSocket Validation
+  </div>
 
-Use this section to record VM‑specific observations, host limitations, or issues
-that may not apply to bare‑metal deployment.# VM Validation Checklist – Zorin OS 18 Streaming Platform
+  **Reference:** Build Checklist §8.2
 
-## Purpose
+  <ul>
+    <li>[ ] WebSocket enabled with authentication</li>
+    <li>[ ] Remote control functional over ZeroTier</li>
+    <li>[ ] Stream and scene control validated</li>
+  </ul>
 
-This checklist defines the validation criteria required before migrating the
-Linux-based streaming platform from **virtual machine testing** to **bare-metal
-deployment**.
-
-It is intentionally structured to capture **configuration changes** so the
-environment can later be recreated via a **playbook or shell script**.
-
-Virtual machine validation is performed using **Hyper‑V on a Windows 10 Pro host**.
-
----
-
-## Validation Scope
-
-This checklist focuses on **functional correctness, stability, recoverability, and
-reproducibility**. Performance tuning is out of scope until bare-metal deployment.
+  ✅ VM Checkpoint: <strong>OBS Remote Control Enabled</strong>
+</div>
 
 ---
 
-## 1. Base Operating System Installation
+<div class="panel">
+  <div class="panel-header">
+    8. NDI Validation
+  </div>
 
-- [ ] Zorin OS 18 installs successfully
-- [ ] System boots reliably
-- [ ] Desktop environment loads correctly
-- [ ] Network connectivity functions
-- [ ] VM snapshots can be created and restored
+  **Reference:** Build Checklist §9
 
-### Configuration Changes Noted
-- Installation options selected
-- Disk layout chosen
-- Network configuration method
+  <ul>
+    <li>[ ] NDI source visible and stable</li>
+    <li>[ ] Gaming system video received</li>
+  </ul>
 
-✅ Pass Criteria:  
-Base OS is usable and recoverable.
-
----
-
-## 2. System Updates & Core Configuration
-
-- [ ] All system updates install successfully
-- [ ] Reboot completes without errors
-- [ ] Desktop remains functional
-- [ ] No third‑party software installed yet
-
-### Configuration Changes Noted
-- Update mechanisms enabled
-- Auto-update policies configured
-- System reboot behavior
-
-✅ Pass Criteria:  
-Updated system remains stable.
+  ✅ VM Checkpoint: <strong>NDI Functional</strong>
+</div>
 
 ---
 
-## 3. Remote Access – SSH Enablement (Required)
+<div class="panel">
+  <div class="panel-header">
+    9. VBAN Audio Validation
+  </div>
 
-SSH is enabled early to support remote administration and automation.
+  **Reference:** Build Checklist §10
 
-- [ ] OpenSSH server installed
-- [ ] SSH enabled to start on boot
-- [ ] SSH access verified from trusted host
-- [ ] Root SSH login disabled
-- [ ] Firewall restricts SSH access
+  <ul>
+    <li>[ ] VBAN stream received</li>
+    <li>[ ] VBAN selectable in OBS</li>
+    <li>[ ] Audio stable and synced</li>
+  </ul>
 
-### Configuration Changes Noted
-- SSH daemon configuration files
-- Authentication methods
-- Firewall rules added
-- User access restrictions
-
-✅ Pass Criteria:  
-Secure remote shell access available.
+  ✅ VM Checkpoint: <strong>VBAN Audio Functional</strong>
+</div>
 
 ---
 
-## 🔐 4. Operating System Security Hardening
-
-- [ ] Non-root user enforced
-- [ ] Root interactive login disabled
-- [ ] Password policies set
-- [ ] Screen lock enabled
-- [ ] Time synchronization active
-- [ ] Firewall default-deny posture
-- [ ] Unused services disabled
-
-### Configuration Changes Noted
-- Security policy files modified
-- Services disabled or masked
-- Firewall defaults
-- User/group changes
-
-✅ Pass Criteria:  
-Security hardening does not break usability.
-
----
-
-## 🌐 5. ZeroTier Point-to-Point VPN (Required)
-
-- [ ] ZeroTier installed and running
-- [ ] Enabled at boot
-- [ ] Node joined to network
-- [ ] Node authorized
-- [ ] Connectivity verified
-
-### Configuration Changes Noted
-- ZeroTier network ID
-- Service enablement
-- Firewall allowances
-- Network interface behavior
-
-✅ Pass Criteria:  
-Secure private connectivity works reliably.
-
----
-
-## ⌨️ 6. Synergy 3 – Keyboard / Mouse Sharing (Required)
-
-- [ ] Synergy installs successfully
-- [ ] Application launches
-- [ ] Host/client roles configured
-- [ ] Input transitions smooth
-- [ ] Operates over ZeroTier securely
-
-### Configuration Changes Noted
-- Synergy configuration files
-- Port usage
-- Autostart settings
-- Network dependencies
-
-✅ Pass Criteria:  
-Input sharing improves workflow safely.
-
----
-
-## 🎛️ 7. OBS Studio Validation (Critical)
-
-### 7.1 Core OBS Functionality
-
-- [ ] OBS installs successfully
-- [ ] OBS launches reliably
-- [ ] Scenes and sources created
-- [ ] Streaming or recording works
-- [ ] Configuration persists across reboot
-
-### Configuration Changes Noted
-- OBS config directory paths
-- Scene and profile names
-- Autostart behavior
-
----
-
-### 🔐 7.1.b Backup & Recovery – OBS Core
-
-- [ ] OBS config backed up
-- [ ] VM snapshot taken
-- [ ] Restore verified
-
-✅ Restore Point: **OBS Core Baseline**
-
----
-
-### 7.2 OBS WebSocket / Remote Control (Critical Subsystem)
-
-- [ ] WebSocket enabled
-- [ ] Authentication enabled
-- [ ] Custom credentials configured
-- [ ] Reachable over ZeroTier
-- [ ] Scene switching works remotely
-- [ ] Stream control works remotely
-
-### Configuration Changes Noted
-- WebSocket port
-- Authentication settings
-- Firewall rules
-- Remote access scope
-
----
-
-### 🔐 7.2.b Backup & Recovery – OBS WebSocket
-
-- [ ] OBS config updated
-- [ ] VM snapshot taken
-- [ ] Restore validated
-
-✅ Restore Point: **OBS WebSocket Enabled**
-
----
-
-## 8. NDI Video Validation (Critical)
-
-- [ ] NDI installed
-- [ ] Source visible in OBS
-- [ ] Gaming system video received
-- [ ] Video stable over time
-
-### Configuration Changes Noted
-- NDI plugin versions
-- Source naming conventions
-- Network requirements
-
----
-
-### 🔐 8.b Backup & Recovery – NDI
-
-- [ ] OBS config backed up
-- [ ] VM snapshot taken
-- [ ] Restore validated
-
-✅ Restore Point: **NDI Functional**
-
----
-
-## 🎧 9. Audio Routing – VBAN (Critical)
-
-- [ ] VBAN receiver installed
-- [ ] Stream discoverable
-- [ ] VBAN selectable in OBS
-- [ ] Audio meters functional
-- [ ] Audio stable and synced
-
-### Configuration Changes Noted
-- VBAN endpoints
-- Audio device mappings
-- OBS source settings
-
----
-
-### 🔐 9.b Backup & Recovery – VBAN
-
-- [ ] Audio config backed up
-- [ ] VM snapshot taken
-- [ ] Restore validated
-
-✅ Restore Point: **VBAN Audio Functional**
-
----
-
-## 🧠 10. whisper.cpp – Real-Time Speech-to-Text (Advanced)
-
-- [ ] whisper.cpp builds
-- [ ] Model files downloaded
-- [ ] Real-time transcription works
-- [ ] Subtitles usable
-- [ ] Profanity filtering viable
-- [ ] Resource usage acceptable
-
-### Configuration Changes Noted
-- Build flags
-- Model versions
-- Runtime invocation
-- Integration points
-
----
-
-### 🔐 10.b Backup & Recovery – whisper.cpp
-
-- [ ] Build artifacts documented
-- [ ] VM snapshot taken
-- [ ] Restore validated
-
-✅ Restore Point: **Whisper STT Functional**
-
----
-
-## 11. Stability & Usability
-
-- [ ] System responsive under load
-- [ ] No recurring crashes
-- [ ] Suspend/resume works
-- [ ] Reboots do not break setup
-
-✅ Pass Criteria:  
-System usable for regular operation.
-
----
-
-## 12. Documentation & Playbook Readiness
-
-- [ ] All configuration changes recorded
-- [ ] Restore points labeled
-- [ ] Manual steps identified
-- [ ] Automation candidates noted
-
-✅ Pass Criteria:  
-Environment can be rebuilt deterministically.
-
----
-
-## Bare-Metal Migration Decision
-
-☐ Approved for Bare-Metal Deployment  
-☐ Blocked – Issues Remain
-
-Blocking Issues:
-- ______________________________________
-- ______________________________________
-
----
-
-## Notes & Observations
-
-Capture lessons learned and future improvements.
+<div class="panel">
+  <div class="panel-header">
+    10. whisper.cpp Validation (Optional / Advanced)
+  </div>
+
+  **Reference:** Build Checklist §11
+
+  <ul>
+    <li>[ ] whisper.cpp builds successfully</li>
+    <li>[ ] Real‑time transcription operates</li>
+    <li>[ ] Integration does not destabilize system</li>
+  </ul>
+
+  ✅ VM Checkpoint: <strong>Whisper Functional</strong>
+</div>
