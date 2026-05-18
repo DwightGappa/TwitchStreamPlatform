@@ -23,18 +23,19 @@ migration</strong> for a dedicated Twitch streaming workstation using
 deliberate change‑control practices.
 </div>
 
-The technical system being built is real, but the **primary deliverable is the
-documented migration process itself**. This includes how scope and constraints
-are defined, risks are identified, decisions are recorded, execution is gated,
-and outcomes are validated.
+The technical system being built is real, but the **primary deliverable is
+the documented migration process itself**. This includes how scope and
+constraints are defined, risks are identified, decisions are recorded,
+execution is gated, and outcomes are validated.
 
-The intent is to make the work **understandable, reviewable, and repeatable**
-as it develops, rather than written up after the fact.
+The intent is to make the work **understandable, reviewable, and
+repeatable** as it develops, rather than written up after the fact.
 
-This project is structured as a **managed migration playbook**, emphasizing
-explicit decision records, traceability, and phased execution. It is designed
-to reflect how infrastructure and system changes are planned and communicated
-in professional environments, even while the work is still in progress.
+This project is structured as a **managed migration playbook**,
+emphasizing explicit decision records, traceability, and phased
+execution. It is designed to reflect how infrastructure and system
+changes are planned and communicated in professional environments, even
+while the work is still in progress.
 
 ---
 
@@ -68,7 +69,8 @@ retrospective summary of completed work.
 ## How to Explore
 
 <div class="panel neutral">
-<strong>Recommended reading order:</strong>
+### Recommended reading order
+
 <ul>
 <li><strong>Scope &amp; Constraints</strong> — what the migration will and
 will not attempt</li>
