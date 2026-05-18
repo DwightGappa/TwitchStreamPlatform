@@ -4,8 +4,6 @@ title: TwitchStreamPlatform
 permalink: /README/
 ---
 
-# TwitchStreamPlatform
-
 <div class="status-chip status-wip">Work in Progress</div>
 
 ---
@@ -14,15 +12,17 @@ permalink: /README/
 
 ## Overview
 
-This repository documents a **change‑controlled Windows‑to‑Linux migration case
-study** for a dedicated Twitch streaming workstation. While the technical system
-is real, the primary deliverable is the **documented migration process**—
-including scope, constraints, risks, decisions, phased execution, and
-validation—captured as the work progresses.
+This repository documents a **change‑controlled Windows‑to‑Linux
+migration case study** for a dedicated Twitch streaming workstation.
+While the technical system is real, the primary deliverable is the
+**documented migration process**—including scope, constraints, risks,
+decisions, phased execution, and validation—captured as the work
+progresses.
 
-This repository serves as a **systems and project management case study**, not
-simply a codebase or how‑to guide. It is intended to be reviewed holistically,
-from initial context through final synthesis, as a single coherent body of work.
+This repository serves as a **systems and project management case
+study**, not simply a codebase or how‑to guide. It is intended to be
+reviewed holistically, from initial context through final synthesis, as
+a single coherent body of work.
 
 📘 **Live case study (authoritative documentation):**  
 <https://dwightgappa.github.io/TwitchStreamPlatform/>
